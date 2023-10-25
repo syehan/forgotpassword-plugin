@@ -1,7 +1,19 @@
 {
-    "name": "syehan/forgotpassword-plugin",
+    "name": "syehan/forgot-password-plugin",
     "type": "october-plugin",
-    "description": "No description provided yet...",
+    "homepage": "https://github.com/syehan/forgot-password-plugin",
+    "license": "MIT",
+    "description": "Allows users who have forgotten their password to unlock, retrieve, or reset it, usually by 
+answering account security questions or sending them an e-mail. This plugin Currently verifying by OTP",
+    "keywords": [
+        "forgot-password",
+        "syehan",
+        "laravel",
+        "october",
+        "octobercms",
+        "otp",
+        "email"
+    ],
     "require": {
         "composer/installers": "~1.0",
         "spomky-labs/otphp": "^11.2"
@@ -12,3 +24,4 @@
         }
     }
 }
+
