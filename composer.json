@@ -3,8 +3,7 @@
     "type": "october-plugin",
     "homepage": "https://github.com/syehan/forgot-password-plugin",
     "license": "MIT",
-    "description": "Allows users who have forgotten their password to unlock, retrieve, or reset it, usually by 
-answering account security questions or sending them an e-mail. This plugin Currently verifying by OTP",
+    "description": "Allows users who have forgotten their password to unlock, retrieve, or reset it.",
     "keywords": [
         "forgot-password",
         "syehan",
