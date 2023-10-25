@@ -1,7 +1,7 @@
 {
-    "name": "syehan/forgot-password-plugin",
+    "name": "syehan/forgotpassword-plugin",
     "type": "october-plugin",
-    "homepage": "https://github.com/syehan/forgot-password-plugin",
+    "homepage": "https://github.com/syehan/forgotpassword-plugin",
     "license": "MIT",
     "description": "Allows users who have forgotten their password to unlock, retrieve, or reset it.",
     "keywords": [
