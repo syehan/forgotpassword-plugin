@@ -1,0 +1,20 @@
+subject = "Forgot Password - OTP Verification"
+description = "This is your OTP for verify account."
+==
+<div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
+  <div style="margin:50px auto;width:70%;padding:20px 0">
+    <div style="border-bottom:1px solid #eee">
+      <a href="" style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">{{ company_name }}</a>
+    </div>
+    <p>Hi, Thank you for choosing {{ company_name|title }}. We hope this email finds you well. To ensure the security of your account, we have implemented an additional layer of protection: Two-Factor Authentication (2FA). As part of this enhanced security feature, we are sending you a One-Time Password (OTP) to verify your identity within {{ otp_period|default(60) }} second.</p>
+    <h2 style="background: #00466a;margin: 0 auto;width: max-content;padding: 0 10px;color: #fff;border-radius: 4px;">{{ otp }}</h2>
+    <p style="font-size:0.9em;">Regards, <br />{{ company_sender_name }}
+    </p>
+    <hr style="border:none;border-top:1px solid #eee" />
+    <div style="float:right;padding:8px 0;color:#aaa;font-size:0.8em;line-height:1;font-weight:300">
+      <p>{{ company_name }}</p>
+      <p>{{ company_site }}</p>
+      <p>{{ company_location }}</p>
+    </div>
+  </div>
+</div>
