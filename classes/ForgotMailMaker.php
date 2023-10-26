@@ -52,7 +52,9 @@ class ForgotMailMaker
 
     public function setMailData(array $data)
     {
-        return $this->mail_data = $data;
+        $this->mail_data = $data;
+
+        return $this;
     }
 
     public function hit($mode = 'send')
