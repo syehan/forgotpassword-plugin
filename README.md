@@ -8,7 +8,7 @@ Use `syehan/forgot-password-plugin`. Allows users who have forgotten their passw
 **1** - You can install the package via composer:
 
 ```bash
-$ composer require syehan/forgot-password-plugin
+$ composer require syehan/forgotpassword-plugin
 ```
 
 ### Usage (Delivering OTP)
