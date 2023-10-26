@@ -1,6 +1,6 @@
 ## OctoberCMS Forgot Password 
 
-Use `syehan/forgot-password-plugin`. Allows users who have forgotten their password to unlock, retrieve, or reset it, usually by answering account security questions or sending them an e-mail. This plugin Currently verifying by OTP.
+Use `syehan/forgotpassword-plugin`. Allows users who have forgotten their password to unlock, retrieve, or reset it, usually by answering account security questions or sending them an e-mail. This plugin Currently verifying by OTP.
 
 
 ### Installation
@@ -11,7 +11,18 @@ Use `syehan/forgot-password-plugin`. Allows users who have forgotten their passw
 $ composer require syehan/forgotpassword-plugin
 ```
 
-### Usage (Delivering OTP)
+### Generating Secret Key Base32 for OTP
+
+In this plugin, we have some command to generate base32 for your secret key, after that save into your `config/syehan-otp-password.php` in `otp_secret_key` key like this : 
+
+```
+php artisan syehan:generate-otp-secret-key
+
+// the output would be like this
+Your Forgot Password OTP Secret Key is : Z566IV6FIMMANIKQQOIJDZNWREKJKAWKGTK3WGGBSFTOIOG4UFCN2QVDJNHUJKKT44JRDSPWTX6JNBYDGMIJHLKCD6UM4WJGFIVPU3VSLTXP6J45PG4V5Q2NMKY3H5FCXGXK4BAXHWX4PX3YDC6VYF5EB25GZJCS2LTKED5GA467HIEJHZW6XPVGXPQVMWITQVHILMDQHI7JE
+```
+
+### Usage
 
 **1** - You can send the forgot password email using this API:
 
@@ -41,6 +52,30 @@ use Syehan\ForgotPassword\Classes\ForgotMailMaker;
 $is_otp_match = (new \Syehan\ForgotPassword\Classes\OtpMaker)->setIssuer($email)->verifyOtp($input_otp);
 ```
 
+### Usage (Change Password)
+
+**1** - by this plugin you can also change after verification by using this API:
+
+```
+POST https://yourdomain.com/api/syehan/forgot-password
+```
+
+or, you can put in any function like this :
+
+```php
+use Syehan\ForgotPassword\Classes\ChangePasswordMaker
+;
+(new ChangePasswordMaker)
+        ->setEmail($email)
+        ->setPassword($password)
+        ->setPasswordConfirmation($password_confirmation)
+        ->change();
+```
+
+lastly, you can able to change your own user model by changing `user_model` in `config/syehan-forgot-password.php`
+
+
+
 ### Config Forgot Password
 
 
@@ -50,6 +85,7 @@ If your have any setup for forgot password, please make sure to copy our config 
 <?php 
 
 return [
+    'user_model'     => env('SYEHAN_FORGOT_PASSWORD_USER_MODEL', \RainLab\User\Models\User::class),
     'otp_secret_key' => env('SYEHAN_FORGOT_PASSWORD_OTP_SECRET_KEY', 'XFT35ETTPHPIBIAMIUEZ7SRE5K4YZLSQP3LU4DZFWW7NDUSRSGAR3JK2ETCXY4BYQIQQQRLX4GI2ZSUT4YQDWEEPMAMI75IHN6NBKBQYCCKPQZGBTJQJYBIBU4LGEBGMVRUW6XZFVSOUUVRL66NFIZ55CH7GIGWUJ5DMR2JRYCTMXUN2ZMVFCBWEJNOOJIMGLIAGZXIJOVGIY'),
     'otp_issuer'     => env('SYEHAN_FORGOT_PASSWORD_OTP_ISSUER', 'SyehanProductIssuer'),
     'otp_digits'     => env('SYEHAN_FORGOT_PASSWORD_OTP_DIGITS', 6),
