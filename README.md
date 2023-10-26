@@ -60,8 +60,10 @@ $is_otp_match = (new \Syehan\ForgotPassword\Classes\OtpMaker)->setIssuer($email)
 **1** - by this plugin you can also change after verification by using this API:
 
 ```
-POST https://yourdomain.com/api/syehan/forgot-password
+POST https://yourdomain.com/api/syehan/change-password
 ```
+
+Add body Param `email`, `password` and `password_confirmation` to make sure that change password for your account succeed.
 
 or, you can put in any function like this :
 
