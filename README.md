@@ -11,7 +11,7 @@ Use `syehan/forgot-password-plugin`. Allows users who have forgotten their passw
 $ composer require syehan/forgot-password-plugin
 ```
 
-### Usage
+### Usage (Delivering OTP)
 
 **1** - You can send the forgot password email using this API:
 
@@ -31,6 +31,14 @@ use Syehan\ForgotPassword\Classes\ForgotMailMaker;
 
 // You also change the mail template by doing this
 (new ForgotMailMaker)->setMailTemplateCode('author.plugin::mail.forgot')->setEmail($email)->hit();
+```
+
+### Usage (Verifying OTP)
+
+**1** - You can verify the OTP password into your function like this:
+
+```php
+$is_otp_match = (new \Syehan\ForgotPassword\Classes\OtpMaker)->setIssuer($email)->verifyOtp($input_otp);
 ```
 
 ### Config Forgot Password
