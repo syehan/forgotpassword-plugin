@@ -24,6 +24,9 @@ Add body Param 'email' to deliver Forgot Password mail to your account.
 **2** - Or you can put this function into your function: 
 
 ```php
+
+use Syehan\ForgotPassword\Classes\ForgotMailMaker;
+
 (new ForgotMailMaker)->setEmail($email)->hit();
 
 // You also change the mail template by doing this
