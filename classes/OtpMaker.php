@@ -20,28 +20,28 @@ class OtpMaker
         $this->period     = config('syehan-forgot-password.otp_period', 60);
     }
 
-    public function setPeriod($period)
+    public function setPeriod(int $period)
     {
         $this->period = $period;
 
         return $this;
     }
 
-    public function setIssuer($issuer)
+    public function setIssuer(string $issuer)
     {
         $this->issuer = $issuer;
 
         return $this;
     }
 
-    public function setDigits($digits)
+    public function setDigits(int $digits)
     {
         $this->digits = $digits;
 
         return $this;
     }
 
-    public function setDigest($algorithm)
+    public function setDigest(string $algorithm)
     {
         $this->algorithm = $algorithm;
 
@@ -60,7 +60,7 @@ class OtpMaker
         return $otp->now();
     }
 
-    public function verifyOtp($otp_key)
+    public function verifyOtp(string|int $otp_key)
     {
         $otp = TOTP::createFromSecret($this->secret_key);
         

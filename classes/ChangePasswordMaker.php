@@ -10,21 +10,21 @@ class ChangePasswordMaker
 
     protected $password, $password_confirmation, $email;
 
-    public function setPassword($password)
+    public function setPassword(string $password)
     {
         $this->password = $password;
 
         return $this;
     }
 
-    public function setPasswordConfirmation($password_confirmation)
+    public function setPasswordConfirmation(string $password_confirmation)
     {
         $this->password_confirmation = $password_confirmation;
 
         return $this;
     }
 
-    public function setEmail($email)
+    public function setEmail(string $email)
     {
         $this->email = $email;
 

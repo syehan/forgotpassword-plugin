@@ -1,3 +1,4 @@
 v1.0.1: First version of Syehan Forgot Password
 v1.1.0: Change Password Feature
 v1.1.1: Fix Minor Patch Namespace Controller
+v1.2.0: Improvement, Enhance Function Arguments, Add function  setMailData() in ForgotMailMaker 
