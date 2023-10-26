@@ -1,4 +1,4 @@
-<?php namespace Syehan\ForgotPassword\Classes;
+<?php namespace Syehan\ForgotPassword\ApiControllers;
 
 use Syehan\ForgotPassword\Classes\{ForgotMailMaker, ChangePasswordMaker};
 
