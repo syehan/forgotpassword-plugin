@@ -31,7 +31,7 @@ class ForgotMailMaker
 
     public function setSendType(string $type)
     {
-        throw_if(!in_array($type, $this->types), \Application::class, sprintf("There's no %s type in our modules.", $type));
+        throw_if(!in_array($type, $this->types), \ApplicationException::class, sprintf("There's no `%s` type in our modules.", $type));
 
         $this->type = $type;
 
