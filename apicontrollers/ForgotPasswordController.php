@@ -18,7 +18,7 @@ class ForgotPasswordController
         return response()->json([
             'status'    => 'success',
             'http_code' => 200,
-            'message'   => "We've sent the OTP into your email account, please ensure your email is registered"
+            'message'   => "We've sent the OTP into your email account, please ensure your email is registered."
         ]);
     }
 
@@ -27,11 +27,13 @@ class ForgotPasswordController
         $email                 = request()->get('email');
         $password              = request()->get('password');
         $password_confirmation = request()->get('password_confirmation');
+        $otp                   = request()->get('otp');
 
         $change = (new ChangePasswordMaker)
         ->setEmail($email)
         ->setPassword($password)
         ->setPasswordConfirmation($password_confirmation)
+        ->withVerifyOtp(!is_null($otp), $otp)
         ->change();
 
         if($change) {

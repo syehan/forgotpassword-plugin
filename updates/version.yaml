@@ -3,3 +3,4 @@ v1.1.0: Change Password Feature
 v1.1.1: Fix Minor Patch Namespace Controller
 v1.2.0: Improvement, Enhance Function Arguments, Add function  setMailData() in ForgotMailMaker 
 v1.2.1: Minor patch setMailData() function
+v1.2.2: Minor patch add withVerifyOtp() function when change password

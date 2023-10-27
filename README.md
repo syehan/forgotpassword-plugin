@@ -30,7 +30,7 @@ Your Forgot Password OTP Secret Key is : Z566IV6FIMMANIKQQOIJDZNWREKJKAWKGTK3WGG
 POST https://yourdomain.com/api/syehan/forgot-password
 ```
 
-Add body Param 'email' to deliver Forgot Password mail to your account.
+Add body Param `email` to deliver Forgot Password mail to your account.
 
 **2** - Or you can put this function into your function: 
 
@@ -63,17 +63,25 @@ $is_otp_match = (new \Syehan\ForgotPassword\Classes\OtpMaker)->setIssuer($email)
 POST https://yourdomain.com/api/syehan/change-password
 ```
 
-Add body Param `email`, `password` and `password_confirmation` to make sure that change password for your account succeed.
+Add body Param `email`, `password` and `password_confirmation` to make sure that change password for your account succeed. Additionally you can verify OTP simultaneously while change password by adding body `otp` request parameter.
 
 or, you can put in any function like this :
 
 ```php
-use Syehan\ForgotPassword\Classes\ChangePasswordMaker
-;
+use Syehan\ForgotPassword\Classes\ChangePasswordMaker;
+
 (new ChangePasswordMaker)
         ->setEmail($email)
         ->setPassword($password)
         ->setPasswordConfirmation($password_confirmation)
+        ->change();
+
+// You can verify OTP simultaneously when changing password like this
+(new ChangePasswordMaker)
+        ->setEmail($email)
+        ->setPassword($password)
+        ->setPasswordConfirmation($password_confirmation)
+        ->withVerifyOtp(true, $otp_input)
         ->change();
 ```
 

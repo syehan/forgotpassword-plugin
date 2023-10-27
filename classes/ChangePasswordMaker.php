@@ -8,7 +8,8 @@
 class ChangePasswordMaker
 {
 
-    protected $password, $password_confirmation, $email;
+    protected $password, $password_confirmation, $email, $is_otp_match;
+    protected $with_verify_otp = false;
 
     public function setPassword(string $password)
     {
@@ -31,14 +32,32 @@ class ChangePasswordMaker
         return $this;
     }
 
+    public function withVerifyOtp(bool $with_verify_otp, $otp = null)
+    {
+        throw_if(!isset($this->email), \ApplicationException::class, 'This function must required email, please setEmail() before use this function.');
+
+        if($with_verify_otp){
+            throw_if(is_null($otp), \ApplicationException::class, 'You using change password with verify OTP, The OTP is required!');
+            throw_if(!is_string($otp) || !is_int($otp), \ApplicationException::class, 'The OTP not string or integer value!');
+            
+            $this->is_otp_match    = (new OtpMaker)->setIssuer($this->email)->verifyOtp($otp);
+            $this->with_verify_otp = $with_verify_otp;
+        }
+
+        return $this;
+    }
+
     public function change()
     {
+        if($this->with_verify_otp){
+            throw_if(!$this->is_otp_match, \ApplicationException::class, 'OTP is invalid, please try again.');
+        }
+
         try {
             $model = config('syehan-forgot-password.user_model', \RainLab\User\Models\User::class);
+            $user  = $model::whereEmail($this->email)->first();
 
-            $user = $model::whereEmail($this->email)->first();
-
-            $user->password = $this->password;
+            $user->password              = $this->password;
             $user->password_confirmation = $this->password_confirmation;
             
             $user->save();
