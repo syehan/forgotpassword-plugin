@@ -5,5 +5,5 @@ v1.2.0: Improvement, Enhance Function Arguments, Add function  setMailData() in 
 v1.2.1: Minor patch setMailData() function
 v1.2.2: Minor patch add withVerifyOtp() function when change password
 v1.2.3: Minor patch add Middleware always accept json routes API
-v1.2.3: Tidy Up Syntax, Add ForgotPasswordError to force throw exception to be json type in API.
+v1.2.4: Tidy Up Syntax, Add ForgotPasswordError to force throw exception to be json type in API.
 
