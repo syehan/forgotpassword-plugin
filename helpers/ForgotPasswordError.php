@@ -8,9 +8,9 @@ class ForgotPasswordError
     public static function render($exception)
     {
         $data = [
-            'message' => $exception->getMessage(),
-            'code'    => static::HTTP_CODE,
-            'status'  => static::ERROR_CODE,
+            'status'    => static::ERROR_CODE,
+            'http_code' => static::HTTP_CODE,
+            'message'   => $exception->getMessage()
         ];
 
         if(env('APP_DEBUG') === true){
