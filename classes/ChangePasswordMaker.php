@@ -1,10 +1,5 @@
 <?php namespace Syehan\ForgotPassword\Classes;
 
-/**
- * Plugin Information File
- *
- * @link https://docs.octobercms.com/3.x/extend/system/plugins.html
- */
 class ChangePasswordMaker
 {
 
@@ -37,9 +32,8 @@ class ChangePasswordMaker
         throw_if(!isset($this->email), \ApplicationException::class, 'This function must required email, please setEmail() before use this function.');
 
         if($with_verify_otp){
-            throw_if(is_null($otp), \ApplicationException::class, 'You using change password with verify OTP, The OTP is required!');
-            throw_if(!is_string($otp) || !is_int($otp), \ApplicationException::class, 'The OTP not string or integer value!');
-            
+            throw_if(blank($otp), \ApplicationException::class, 'You using change password with verify OTP, The OTP is required!');
+
             $this->is_otp_match    = (new OtpMaker)->setIssuer($this->email)->verifyOtp($otp);
             $this->with_verify_otp = $with_verify_otp;
         }
@@ -56,6 +50,8 @@ class ChangePasswordMaker
         try {
             $model = config('syehan-forgot-password.user_model', \RainLab\User\Models\User::class);
             $user  = $model::whereEmail($this->email)->first();
+
+            throw_if(!$user, \ApplicationException::class, 'We detect that your account is unable to change the password.');
 
             $user->password              = $this->password;
             $user->password_confirmation = $this->password_confirmation;

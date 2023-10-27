@@ -2,11 +2,6 @@
 
 use Mail;
 
-/**
- * Plugin Information File
- *
- * @link https://docs.octobercms.com/3.x/extend/system/plugins.html
- */
 class ForgotMailMaker
 {
 

@@ -5,7 +5,7 @@ use Illuminate\Console\Command;
 use ParagonIE\ConstantTime\Base32;
 
 /**
- * SeedBenefit Command
+ * Generate Secret Key Command
  *
  * @link https://docs.octobercms.com/3.x/extend/console-commands.html
  */

@@ -2,11 +2,6 @@
 
 use OTPHP\TOTP;
 
-/**
- * Plugin Information File
- *
- * @link https://docs.octobercms.com/3.x/extend/system/plugins.html
- */
 class OtpMaker
 {
     protected $secret_key, $issuer, $period, $algorithm, $digits;
